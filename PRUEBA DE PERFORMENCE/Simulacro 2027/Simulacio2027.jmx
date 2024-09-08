@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="año 2027">
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="Variables definidas por el Usuario">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="70%" enabled="true">
+        <intProp name="ThreadGroup.num_threads">9582</intProp>
+        <stringProp name="ThreadGroup.ramp_time">1.77</stringProp>
+        <longProp name="ThreadGroup.duration">5400</longProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Controlador Bucle">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Petición HTTP" enabled="true">
+          <stringProp name="HTTPSampler.domain">apiv2-test.coordinadora.com</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">/recogidas/cm-solicitud-recogidas-ms/solicitud-recogida</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;tipoEnvio&quot;: &quot;1&quot;,&#xd;
+&quot;tipoProducto&quot;: &quot;4&quot;,&#xd;
+&quot;indicativo&quot;: &quot;57&quot;,&#xd;
+&quot;tipoDocumento&quot;: &quot;13&quot;,&#xd;
+&quot;email&quot;: &quot;ana@gmail.com&quot;,&#xd;
+&quot;personaEntrega&quot;: &quot;1&quot;,&#xd;
+&quot;indicativoEntrega&quot;: &quot;57&quot;,&#xd;
+&quot;medidasAproximadas&quot;: [&#xd;
+{&#xd;
+&quot;id&quot;: 2,&#xd;
+&quot;tipoPaq&quot;: &quot;Par de zapatos&quot;,&#xd;
+&quot;nombrePaq&quot;: &quot;Par de za...&quot;,&#xd;
+&quot;cantidad&quot;: 1&#xd;
+}&#xd;
+],&#xd;
+&quot;ciudad&quot;: &quot;Envigado (Ant)&quot;,&#xd;
+&quot;via&quot;: &quot;&quot;,&#xd;
+&quot;numero&quot;: &quot;&quot;,&#xd;
+&quot;detalle&quot;: &quot;PARQUE SAN JOSE BOD 14&quot;,&#xd;
+&quot;tipoVia&quot;: 16,&#xd;
+&quot;nombres&quot;: &quot;prueba&quot;,&#xd;
+&quot;apellidos&quot;: &quot;prueba1&quot;,&#xd;
+&quot;documento&quot;: &quot;1036149000&quot;,&#xd;
+&quot;celular&quot;: &quot;3005777777&quot;,&#xd;
+&quot;ciudadDetalle&quot;: {&#xd;
+&quot;nombre_terminal_operativa&quot;: &quot;Medellin&quot;,&#xd;
+&quot;tipo_servicio&quot;: &quot;A&quot;,&#xd;
+&quot;dane_ciudad&quot;: &quot;05266&quot;,&#xd;
+&quot;dane_actual&quot;: &quot;05266000&quot;,&#xd;
+&quot;ciudad_tarifa&quot;: &quot;05266000&quot;,&#xd;
+&quot;sms&quot;: true,&#xd;
+&quot;cubre_mqp&quot;: true,&#xd;
+&quot;codigo_postal&quot;: &quot;055428&quot;,&#xd;
+&quot;terminal_operativa&quot;: 2,&#xd;
+&quot;cubre_me&quot;: true,&#xd;
+&quot;area_telefono&quot;: 4,&#xd;
+&quot;observaciones2&quot;: &quot;FCE - RD - FD - RCE&quot;,&#xd;
+&quot;codigo&quot;: &quot;05266000&quot;,&#xd;
+&quot;tipo_poblacion&quot;: &quot;D&quot;,&#xd;
+&quot;activo&quot;: true,&#xd;
+&quot;codigo_terminal&quot;: 2,&#xd;
+&quot;codigo_interno&quot;: 204,&#xd;
+&quot;mensajeria&quot;: true,&#xd;
+&quot;cubre_mm&quot;: false,&#xd;
+&quot;departamento&quot;: &quot;05&quot;,&#xd;
+&quot;cubre_cm&quot;: false,&#xd;
+&quot;nombre&quot;: &quot;Envigado (Ant)&quot;,&#xd;
+&quot;abreviado&quot;: &quot;ENVIGADO&quot;,&#xd;
+&quot;nombre_terminal&quot;: &quot;Medellin&quot;,&#xd;
+&quot;observaciones&quot;: &quot;&quot;&#xd;
+},&#xd;
+&quot;direccion&quot;: &quot;Cl 10 # 20 30&quot;,&#xd;
+&quot;fechaRecogida&quot;: &quot;2023-12-04&quot;,&#xd;
+&quot;nombreEntrega&quot;: &quot;prueba&quot;,&#xd;
+&quot;apellidosEntrega&quot;: &quot;prueba1&quot;,&#xd;
+&quot;celularEntrega&quot;: &quot;3045677777&quot;,&#xd;
+&quot;emailUsuario&quot;: &quot;anar.7@gmail.com&quot;,&#xd;
+&quot;descripcionTipoVia&quot;: &quot;Kilómetro&quot;,&#xd;
+&quot;aplicativo&quot;: &quot;envios&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Reporte resumen">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="30%">
+        <intProp name="ThreadGroup.num_threads">4106</intProp>
+        <stringProp name="ThreadGroup.ramp_time">0.050</stringProp>
+        <longProp name="ThreadGroup.duration">81000</longProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Controlador Bucle">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Petición HTTP">
+          <stringProp name="HTTPSampler.domain">apiv2-test.coordinadora.com</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">/recogidas/cm-solicitud-recogidas-ms/solicitud-recogida</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;tipoEnvio&quot;: &quot;1&quot;,&#xd;
+&quot;tipoProducto&quot;: &quot;4&quot;,&#xd;
+&quot;indicativo&quot;: &quot;57&quot;,&#xd;
+&quot;tipoDocumento&quot;: &quot;13&quot;,&#xd;
+&quot;email&quot;: &quot;ana@gmail.com&quot;,&#xd;
+&quot;personaEntrega&quot;: &quot;1&quot;,&#xd;
+&quot;indicativoEntrega&quot;: &quot;57&quot;,&#xd;
+&quot;medidasAproximadas&quot;: [&#xd;
+{&#xd;
+&quot;id&quot;: 2,&#xd;
+&quot;tipoPaq&quot;: &quot;Par de zapatos&quot;,&#xd;
+&quot;nombrePaq&quot;: &quot;Par de za...&quot;,&#xd;
+&quot;cantidad&quot;: 1&#xd;
+}&#xd;
+],&#xd;
+&quot;ciudad&quot;: &quot;Envigado (Ant)&quot;,&#xd;
+&quot;via&quot;: &quot;&quot;,&#xd;
+&quot;numero&quot;: &quot;&quot;,&#xd;
+&quot;detalle&quot;: &quot;PARQUE SAN JOSE BOD 14&quot;,&#xd;
+&quot;tipoVia&quot;: 16,&#xd;
+&quot;nombres&quot;: &quot;prueba&quot;,&#xd;
+&quot;apellidos&quot;: &quot;prueba1&quot;,&#xd;
+&quot;documento&quot;: &quot;1036149000&quot;,&#xd;
+&quot;celular&quot;: &quot;3005777777&quot;,&#xd;
+&quot;ciudadDetalle&quot;: {&#xd;
+&quot;nombre_terminal_operativa&quot;: &quot;Medellin&quot;,&#xd;
+&quot;tipo_servicio&quot;: &quot;A&quot;,&#xd;
+&quot;dane_ciudad&quot;: &quot;05266&quot;,&#xd;
+&quot;dane_actual&quot;: &quot;05266000&quot;,&#xd;
+&quot;ciudad_tarifa&quot;: &quot;05266000&quot;,&#xd;
+&quot;sms&quot;: true,&#xd;
+&quot;cubre_mqp&quot;: true,&#xd;
+&quot;codigo_postal&quot;: &quot;055428&quot;,&#xd;
+&quot;terminal_operativa&quot;: 2,&#xd;
+&quot;cubre_me&quot;: true,&#xd;
+&quot;area_telefono&quot;: 4,&#xd;
+&quot;observaciones2&quot;: &quot;FCE - RD - FD - RCE&quot;,&#xd;
+&quot;codigo&quot;: &quot;05266000&quot;,&#xd;
+&quot;tipo_poblacion&quot;: &quot;D&quot;,&#xd;
+&quot;activo&quot;: true,&#xd;
+&quot;codigo_terminal&quot;: 2,&#xd;
+&quot;codigo_interno&quot;: 204,&#xd;
+&quot;mensajeria&quot;: true,&#xd;
+&quot;cubre_mm&quot;: false,&#xd;
+&quot;departamento&quot;: &quot;05&quot;,&#xd;
+&quot;cubre_cm&quot;: false,&#xd;
+&quot;nombre&quot;: &quot;Envigado (Ant)&quot;,&#xd;
+&quot;abreviado&quot;: &quot;ENVIGADO&quot;,&#xd;
+&quot;nombre_terminal&quot;: &quot;Medellin&quot;,&#xd;
+&quot;observaciones&quot;: &quot;&quot;&#xd;
+},&#xd;
+&quot;direccion&quot;: &quot;Cl 10 # 20 30&quot;,&#xd;
+&quot;fechaRecogida&quot;: &quot;2023-12-04&quot;,&#xd;
+&quot;nombreEntrega&quot;: &quot;prueba&quot;,&#xd;
+&quot;apellidosEntrega&quot;: &quot;prueba1&quot;,&#xd;
+&quot;celularEntrega&quot;: &quot;3045677777&quot;,&#xd;
+&quot;emailUsuario&quot;: &quot;anar.7@gmail.com&quot;,&#xd;
+&quot;descripcionTipoVia&quot;: &quot;Kilómetro&quot;,&#xd;
+&quot;aplicativo&quot;: &quot;envios&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Reporte resumen">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

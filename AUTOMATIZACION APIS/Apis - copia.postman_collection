@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "87ce4c3f-2948-41fc-a629-fe9176499c88",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33722024"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Estado 202 OK\", function () {\r",
+							"    pm.response.to.have.status(202);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar el campo 'direccion' sea alfanumérico y no este vacio\", function () {\r",
+							"    var jsonData = pm.request.body ? JSON.parse(pm.request.body.raw) : {};\r",
+							"    var alphanumericRegex = /^[a-z0-9\\s]+$/i; \r",
+							"    pm.expect(jsonData).to.have.property('direccion');\r",
+							"    pm.expect(jsonData.direccion).to.not.be.empty;\r",
+							"    pm.expect(jsonData.direccion).to.match(alphanumericRegex);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar el campo 'fechaRecogida' tiene el formato 'yyyy-mm-dd y es obligatorio\", function () {\r",
+							"    var jsonData = pm.request.body ? JSON.parse(pm.request.body.raw) : {};\r",
+							"    var dateFormatRegex = /^\\d{4}-\\d{2}-\\d{2}$/;\r",
+							"    pm.expect(jsonData).to.have.property('fechaRecogida');\r",
+							"    pm.expect(jsonData.fechaRecogida).to.not.be.empty;\r",
+							"    pm.expect(jsonData.fechaRecogida).to.match(dateFormatRegex);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Validar que no haya duplicados\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.not.include(\"duplicada\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Campo 'fechaRecogida' está dentro de los próximos 5 días hábiles\", function () {\r",
+							"    var jsonData = pm.request.body ? JSON.parse(pm.request.body.raw) : {};\r",
+							"    var today = new Date();\r",
+							"    var futureDate = new Date();\r",
+							"    futureDate.setDate(today.getDate() + 5);\r",
+							"    var fechaRecogida = new Date(jsonData.fechaRecogida);\r",
+							"    pm.expect(fechaRecogida).to.be.greaterThan(today);\r",
+							"    pm.expect(fechaRecogida).to.be.lessThan(futureDate);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar los campos nombreEntrega, apellidosEntrega, celularEntrega, emailUsuario, descripcionTipoVia, aplicativo sean obligatorios y alfanuméricos\", function () {\r",
+							"    var jsonData = pm.request.body ? JSON.parse(pm.request.body.raw) : {};\r",
+							"    var alphanumericRegex = /^[a-z0-9\\s]+$/i; \r",
+							"\r",
+							"    var requiredFields = ['nombreEntrega', 'apellidosEntrega', 'celularEntrega', 'emailUsuario', 'descripcionTipoVia', 'aplicativo'];\r",
+							"    \r",
+							"    requiredFields.forEach(function(field) {\r",
+							"        pm.expect(jsonData).to.have.property(field);\r",
+							"        pm.expect(jsonData[field]).to.not.be.empty;\r",
+							"    });\r",
+							"\r",
+							"    var fieldsToCheck = ['nombreEntrega', 'apellidosEntrega', 'celularEntrega', 'emailUsuario', 'descripcionTipoVia', 'aplicativo'];\r",
+							"    \r",
+							"    fieldsToCheck.forEach(function(field) {\r",
+							"        pm.expect(jsonData[field]).to.match(alphanumericRegex);\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"tipoEnvio\": \"1\",\r\n\"tipoProducto\": \"4\",\r\n\"indicativo\": \"57\",\r\n\"tipoDocumento\": \"13\",\r\n\"email\": \"ana@gmail.com\",\r\n\"personaEntrega\": \"1\",\r\n\"indicativoEntrega\": \"57\",\r\n\"medidasAproximadas\": [\r\n{\r\n\"id\": 2,\r\n\"tipoPaq\": \"Par de zapatos\",\r\n\"nombrePaq\": \"Par de za...\",\r\n\"cantidad\": 1\r\n}\r\n],\r\n\"ciudad\": \"Envigado (Ant)\",\r\n\"via\": \"\",\r\n\"numero\": \"\",\r\n\"detalle\": \"PARQUE SAN JOSE BOD 14\",\r\n\"tipoVia\": 16,\r\n\"nombres\": \"prueba\",\r\n\"apellidos\": \"prueba1\",\r\n\"documento\": \"1036149000\",\r\n\"celular\": \"3005777777\",\r\n\"ciudadDetalle\": {\r\n\"nombre_terminal_operativa\": \"Medellin\",\r\n\"tipo_servicio\": \"A\",\r\n\"dane_ciudad\": \"05266\",\r\n\"dane_actual\": \"05266000\",\r\n\"ciudad_tarifa\": \"05266000\",\r\n\"sms\": true,\r\n\"cubre_mqp\": true,\r\n\"codigo_postal\": \"055428\",\r\n\"terminal_operativa\": 2,\r\n\"cubre_me\": true,\r\n\"area_telefono\": 4,\r\n\"observaciones2\": \"FCE - RD - FD - RCE\",\r\n\"codigo\": \"05266000\",\r\n\"tipo_poblacion\": \"D\",\r\n\"activo\": true,\r\n\"codigo_terminal\": 2,\r\n\"codigo_interno\": 204,\r\n\"mensajeria\": true,\r\n\"cubre_mm\": false,\r\n\"departamento\": \"05\",\r\n\"cubre_cm\": false,\r\n\"nombre\": \"Envigado (Ant)\",\r\n\"abreviado\": \"ENVIGADO\",\r\n\"nombre_terminal\": \"Medellin\",\r\n\"observaciones\": \"\"\r\n},\r\n\"direccion\": \"Cl 10 # 20 30\",\r\n\"fechaRecogida\": \"2023-12-04\",\r\n\"nombreEntrega\": \"prueba\",\r\n\"apellidosEntrega\": \"prueba1\",\r\n\"celularEntrega\": \"3045677777\",\r\n\"emailUsuario\": \"anar.7@gmail.com\",\r\n\"descripcionTipoVia\": \"Kilómetro\",\r\n\"aplicativo\": \"envios\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://apiv2-test.coordinadora.com/recogidas/cm-solicitud-recogidas-ms/solicitud-recogida\n",
+					"protocol": "https",
+					"host": [
+						"apiv2-test",
+						"coordinadora",
+						"com"
+					],
+					"path": [
+						"recogidas",
+						"cm-solicitud-recogidas-ms",
+						"solicitud-recogida\n"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

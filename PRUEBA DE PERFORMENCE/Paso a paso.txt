@@ -1,0 +1,5 @@
+Utilice la herramienta JMETER, dividí en dos grupos de hilos la petición que realizo el cliente el 70% de 9000 que es 6300 y el otro 30% que es 2700, dividí los 8640 segundos que tiene un día 24h el 70% en un desde las 7:30 hasta las 9:00(5.400) y el otro 30%(81.000) en el resto del día.
+
+Dividí el numero de solicitudes por los segundos que corresponde cada grupo de hilos y se lo añadí al periodo de subida que es por segundos.
+
+Multiplique el valor por 1.15 que es el aumento de cada año y realice la misma operación por cada año.
